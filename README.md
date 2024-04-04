@@ -4,18 +4,17 @@
 **Version**: 1.0.0 
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+Books are an integral part of our lives, and keeping track of our favorite reads can enhance our reading experience. This app provides a platform for users to curate and maintain a list of their favorite books effortlessly.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+To begin using the app, simply navigate to the provided URL and start adding your favorite books to your list.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+ This utilizes HTML, CSS, and JavaScript for the frontend interface, while the backend is powered by a Node.js server. Data storage and management are handled by MongoDB.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+04-04-24 4:10PM - Local storage functional
 
 ## Estimates
 Name of feature: 2. Storage

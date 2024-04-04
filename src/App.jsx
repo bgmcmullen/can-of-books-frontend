@@ -8,7 +8,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 
 class App extends React.Component {
@@ -29,16 +28,6 @@ class App extends React.Component {
             >
             </Route>
           </Routes>
-          <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </nav>
           <Footer />
         </Router>
       </>
