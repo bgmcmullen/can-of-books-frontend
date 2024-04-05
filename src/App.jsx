@@ -30,7 +30,6 @@ function App() {
         'description' : description,
         'status' : status
       });
-
       console.log('Response:', response.data);
 
       // Close the modal
@@ -40,6 +39,7 @@ function App() {
       // Handle error here (e.g., show error message to the user)
     }
   };
+
 
 
 
@@ -58,6 +58,7 @@ function App() {
             element={<About />}
           />
         </Routes>
+        <br/>
         <Button variant="primary" onClick={handleShow}>Add Book</Button>
         <Footer />
       </Router>
