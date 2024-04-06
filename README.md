@@ -37,5 +37,15 @@ Finish time: 8:16
 
 Actual time needed to complete: 1:46
 
+Name of feature: 1. Creat
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 6:50pm
+
+Finish time: 9:41
+
+Actual time needed to complete: 3 hours
+
 ## Credit and Collaborations
 chatgpt
