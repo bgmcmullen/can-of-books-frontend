@@ -1,0 +1,7 @@
+body {
+  background-color: lightblue !important;
+}
+
+.active.carousel-item{
+  background-color: aqua;
+}

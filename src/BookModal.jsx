@@ -8,7 +8,7 @@ function  BookModal(props){
 
   return(      
   <Modal show={props.show} onHide={props.handleClose}>
-    <Modal.Header closeButton>
+    <Modal.Header closeButton onClick={props.handleClose}>
       <Modal.Title>Add a Book!</Modal.Title>
     </Modal.Header>
     <Modal.Body>

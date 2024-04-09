@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import BestBooks from './BestBooks';
 import About from './About';
+import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import BookModal from './BookModal';
@@ -14,6 +15,7 @@ import {
 } from "react-router-dom";
 
 function App() {
+
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -31,6 +33,7 @@ function App() {
         'status' : status
       });
       console.log('Response:', response.data);
+      
 
       // Close the modal
       handleClose();
@@ -45,7 +48,7 @@ function App() {
 
   return (
     <>
-      <BookModal show={show} setTitle={setTitle} setDescription={setDescription} setStatus={setStatus} handleSaveChanges={handleSaveChanges}/>
+      <BookModal show={show} setTitle={setTitle} setDescription={setDescription} setStatus={setStatus} handleClose={handleClose} handleSaveChanges={handleSaveChanges}/>
       <Router>
         <Header />
         <Routes>
