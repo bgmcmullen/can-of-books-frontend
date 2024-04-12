@@ -20,7 +20,7 @@ class BestBooks extends React.Component {
   }
 
   fetchBooks() {
-    axios.get('http://localhost:3001/books').then(response => {
+    axios.get('https://can-of-books-backend-ryex.onrender.com/books').then(response => {
       this.setState({ books: response.data });
     });
   }
@@ -28,7 +28,7 @@ class BestBooks extends React.Component {
   handleDeleteBook = async (bookId) => {
     try {
       // Send a DELETE request to the server to delete the book
-      const response = await axios.delete(`http://localhost:3001/books/${bookId}`);
+      const response = await axios.delete(`https://can-of-books-backend-ryex.onrender.com/books/${bookId}`);
       console.log('Book deleted:', response.data);
       this.fetchBooks();
 
@@ -40,7 +40,7 @@ class BestBooks extends React.Component {
   handleUpdateBook = async () => {
     try {
 
-      const response = await axios.put(`http://localhost:3001/books/${this.state.currentId}`, {
+      const response = await axios.put(`https://can-of-books-backend-ryex.onrender.com/books/${this.state.currentId}`, {
         'title': this.state.newTitle,
         'description': this.state.newDescription,
         'status': this.state.newStatus
