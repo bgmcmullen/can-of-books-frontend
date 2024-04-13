@@ -120,7 +120,7 @@ class BestBooks extends React.Component {
         )}
         <Modal show={this.state.show}>
           <Modal.Header closeButton onClick={() => this.handleClose()}>
-            <Modal.Title>Add a Book!</Modal.Title>
+            <Modal.Title>Update Book</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>

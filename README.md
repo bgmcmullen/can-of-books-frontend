@@ -16,6 +16,10 @@ To begin using the app, simply navigate to the provided URL and start adding you
 
 04-04-24 4:10PM - Local storage functional
 
+04-08-24 8:20PM - Create and Delete functions added
+
+04-12-24 7:46PM - Update function added
+
 ## Estimates
 Name of feature: 2. Storage
 
@@ -37,7 +41,7 @@ Finish time: 8:16
 
 Actual time needed to complete: 1:46
 
-Name of feature: 1. Creat
+Name of feature: 1. Create
 
 Estimate of time needed to complete: 2 hours
 
@@ -46,6 +50,27 @@ Start time: 6:50pm
 Finish time: 9:41
 
 Actual time needed to complete: 3 hours
+
+Name of feature: 2. Delete
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 6:50pm
+
+Finish time: 9:41
+
+Actual time needed to complete: 3 hours
+
+Name of feature: 1. Update
+
+Estimate of time needed to complete: 4 hours
+
+Start time: 6:50pm
+
+Finish time: 9:41
+
+Actual time needed to complete: 7 hours
+
 
 ## Credit and Collaborations
 chatgpt
