@@ -4,6 +4,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import {withAuth0} from '@auth0/auth0-react';
+import BookModal from './BookModal';
 
 
 class BestBooks extends React.Component {
@@ -15,20 +17,83 @@ class BestBooks extends React.Component {
       newTitle: '',
       newDescription: '',
       newStatus: '',
-      currentId: ''
+      currentId: '',
+      showAddModal: false,
+      title: '',
+      description: '',
+      status: '',
+      config: {}
     }
   }
 
-  fetchBooks() {
-    axios.get('https://can-of-books-backend-ryex.onrender.com/books').then(response => {
-      this.setState({ books: response.data });
-    });
+  
+
+  handleCloseAddModal = () => {
+    this.setState({showAddModal: false})
   }
+  handleShowAddModal = () => {
+    this.setState({showAddModal: true});
+
+  }
+
+  setTitle = (target) => {
+    this.setState({title: target});
+  }
+
+  setDescription = (target) => {
+    this.setState({description: target});
+  }
+
+  setStatus = (target) => {
+    this.setState({status: target});
+  }
+
+  handleSaveChanges = async () => {
+    try {
+      // Send the form data to the backend endpoint using Axios
+      const response = await axios.post('http://localhost:3001/books', {
+        'title' : this.state.title,
+        'description' : this.state.description,
+        'status' : this.state.status
+      }, this.state.config);
+      console.log('Response:', response.data);
+      
+
+      // Close the modal
+      this.handleCloseAddModal();
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error here (e.g., show error message to the user)
+    }
+    this.fetchBooks();
+  };
+
+  async getToken() {
+    return await this.props.auth0.getIdTokenClaims()
+    .then(res => res.__raw)
+    .catch(err => console.error(err))
+  }
+
+async fetchBooks() {
+  try {
+      const jwt = await this.getToken();
+      this.setState({ config: { headers: { 'Authorization': `Bearer ${jwt}` } } }, async () => {
+          try {
+              const response = await axios.get('http://localhost:3001/books', this.state.config);
+              this.setState({ books: response.data });
+          } catch (error) {
+              console.error(error);
+          }
+      });
+  } catch (err) { 
+      console.error(err);
+  }
+}
 
   handleDeleteBook = async (bookId) => {
     try {
       // Send a DELETE request to the server to delete the book
-      const response = await axios.delete(`https://can-of-books-backend-ryex.onrender.com/books/${bookId}`);
+      const response = await axios.delete(`http://localhost:3001/books/${bookId}`, this.state.config);
       console.log('Book deleted:', response.data);
       this.fetchBooks();
 
@@ -40,11 +105,11 @@ class BestBooks extends React.Component {
   handleUpdateBook = async () => {
     try {
 
-      const response = await axios.put(`https://can-of-books-backend-ryex.onrender.com/books/${this.state.currentId}`, {
+      const response = await axios.put(`http://localhost:3001/books/${this.state.currentId}`, {
         'title': this.state.newTitle,
         'description': this.state.newDescription,
         'status': this.state.newStatus
-      });
+      }, this.state.config);
       console.log('Book updated:', response.data);
       this.fetchBooks();
     } catch (error) {
@@ -67,7 +132,6 @@ class BestBooks extends React.Component {
 
   setNewTitle(target) {
     this.setState({ newTitle: target });
-    console.log(this.state.newTitle);
   }
 
   setNewDescription(target) {
@@ -98,6 +162,8 @@ class BestBooks extends React.Component {
     return (
       <>
 
+<BookModal show={this.state.showAddModal} setTitle={this.setTitle} setDescription={this.setDescription} setStatus={this.setStatus} handleClose={this.handleCloseAddModal} handleSaveChanges={this.handleSaveChanges}/>
+
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
         {this.state.books.length > 0 ? (
@@ -108,7 +174,7 @@ class BestBooks extends React.Component {
                   <h5>{book.title}</h5>
                   <p>{book.description}</p>
                   <div className="button-group">
-                    <Button variant="primary" onClick={() => this.handleDeleteBook(book._id)}>Delete This Book</Button>
+                    <Button variant="primary" style={{margin: '50px'}} onClick={() => this.handleDeleteBook(book._id)}>Delete This Book</Button>
                     <Button variant="secondary" onClick={() => this.prepareUpdateBook(book)}>Update Book</Button>
                   </div>
                 </div>
@@ -147,9 +213,10 @@ class BestBooks extends React.Component {
             </Button>
           </Modal.Footer>
         </Modal>
+        <Button variant="primary" onClick={this.handleShowAddModal}>Add Book</Button>
       </>
     );
   }
 }
 
-export default BestBooks;
+export default withAuth0(BestBooks);
