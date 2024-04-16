@@ -20,6 +20,8 @@ To begin using the app, simply navigate to the provided URL and start adding you
 
 04-12-24 7:46PM - Update function added
 
+04-14-24 7:46PM - Auth0 function added
+
 ## Estimates
 Name of feature: 2. Storage
 
@@ -70,6 +72,16 @@ Start time: 6:50pm
 Finish time: 9:41
 
 Actual time needed to complete: 7 hours
+
+Name of feature: 1. Auth0
+
+Estimate of time needed to complete: 5 hours
+
+Actual time needed to complete: 6 hours
+
+## Diagram
+
+[Diagram](wrrc_diagram.pdf)
 
 
 ## Credit and Collaborations
